@@ -1,0 +1,55 @@
+pip install tensorflow
+
+import tensorflow as tf
+from tensorflow.keras.applications import ResNet50
+from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
+from tensorflow.keras.preprocessing import image
+import numpy as np
+
+import tensorflow as tf
+from tensorflow.keras.applications import ResNet50
+from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
+from tensorflow.keras.preprocessing import image
+import numpy as np
+
+# Load the ResNet50 model with pre-trained ImageNet weights
+model = ResNet50(weights='imagenet')
+
+# Load an image from disk (make sure the image is 224x224 or resize it)
+img_path = 'path_to_your_image.jpg'
+img = image.load_img(img_path, target_size=(224, 224))
+
+# Convert the image to a numpy array
+x = image.img_to_array(img)
+
+# Add a batch dimension (ResNet50 expects batch dimension in input)
+x = np.expand_dims(x, axis=0)
+
+# Preprocess the input for ResNet50 (normalization and scaling)
+x = preprocess_input(x)
+
+# Make predictions
+predictions = model.predict(x)
+
+# Decode the predictions into readable class names
+decoded_predictions = decode_predictions(predictions, top=3)[0]
+for i, (imagenet_id, label, score) in enumerate(decoded_predictions):
+    print(f"{i+1}: {label} ({score:.2f})")
+
+# Freeze the ResNet50 base model
+base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+base_model.trainable = False
+
+# Add custom layers
+from tensorflow.keras import layers, models
+model = models.Sequential([
+    base_model,
+    layers.GlobalAveragePooling2D(),
+    layers.Dense(1024, activation='relu'),
+    layers.Dense(10, activation='softmax')  # Assuming 10 output classes
+])
+
+# Compile the model
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+# Now you can train the model with your own dataset
