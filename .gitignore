@@ -1,0 +1,11 @@
+# Ignore environment files
+.env
+
+# Other common ignores
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
