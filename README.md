@@ -29,12 +29,26 @@ Self-Help, Inspiration
   We will use the `t_kjv` file from this dataset.
 - **Secondary Data Source**: *To Be Determined*
 
+## Data Extraction and Cleaning Process
+
+- **Data Extraction**: 
+    1. The King James version, in CSV form, is selected from the available files from the Kaggle link
+    2. The CSV is then read into the Jupyter notebook as a dataframe called bible
+- **Data Cleaning**: Note that each verse is accessed by a unique key, the combination of the BOOK+CHAPTER+VERSE id.
+    1. The scope of the project will be limited to only referencing the Book of Psalms for applying recommendation tool.   
+    2. Therefore, a new data frame will be created by applying the .loc function to limit the original Data Frame to only the Book of Psalms (referenced as 19 in the original dataset), and naming the new data frame "psalms."
+    3. To further clean the data, drop columns for index, 'id' (unique key for each chapter/verse combination), and 'b' (Book), and reset the index for the revised data frame referencing.
+    4. The revised data frame will include and inde for each Chapter/verse combination within the Book of Psalms.
+    5. Within the Book of Psalms, create a sample question for each verse that would reasonably be expected to be asked by a person, and store these questions for each verse in a dictionary.  Exclude all verses that do not have an insightful question it can answer.  And, avoid religious references in the questions.  The dictionary created in step 5 will later be used to train the model. 
+    6. Create a new dataframe that will be filtered to include ONLY the verses that would be able to answer insightful questions, as defined in the prior step.  The dataframe will inlcude columns for the Chapter key, the Verse key, the verse text, and the sample questions for each verse, and will be re-indexed for the remaining "filtered" verses relevant to this application.  The new datafram will be called "filer
+    7. Save the data frame to a CSV to be used in the model.
+
 ## Key Research and Exploration Questions
 
 While this project primarily focuses on a query model using Retrieval Augmented Generation (RAG), the key challenges include:
 
 - Developing a model that effectively retrieves relevant Bible verses based on specific input topics or queries.
-- Testing the effectiveness of the query results using cosine similarity to determine the relevance between the user query and the Bible verses.
+- Testing the effectiveness of the query results using cosine similarity and/or Euclidean Distance to determine the relevance between the user query and the Bible verses.
 
 ## Licensing and Legal Terms
 
