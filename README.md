@@ -17,7 +17,7 @@ Team Members: Alex Baraban, Catherine Wanko, Michael Nicholas, Ryan Hough
 
 ## Project Overview
 
-**ScriptureSeeker** aims to develop a supervised learning model that assigns embeddings to Bible verses from the King James Version. Utilizing cosine similarity, the system retrieves the most contextually relevant verses in response to user queries. The goal is to create a model that efficiently provides appropriate biblical references based on input topics or questions.
+**ScriptureSeeker** aims to develop a supervised learning model that assigns embeddings to Bible verses from the King James Version. Utilizing Euclidean Distance, the system retrieves the most contextually relevant verses in response to user queries. The goal is to create a model that efficiently provides appropriate biblical references based on input topics or questions.
 
 ## Project Industry
 
@@ -39,7 +39,7 @@ Self-Help, Inspiration
     2. Therefore, a new data frame will be created by applying the .loc function to limit the original Data Frame to only the Book of Psalms (referenced as 19 in the original dataset), and naming the new data frame "psalms."
     3. To further clean the data, drop columns for index, 'id' (unique key for each chapter/verse combination), and 'b' (Book), and reset the index for the revised data frame referencing.
     4. The revised data frame will include and inde for each Chapter/verse combination within the Book of Psalms.
-    5. Within the Book of Psalms, create a sample question for each verse that would reasonably be expected to be asked by a person, and store these questions for each verse in a dictionary.  Exclude all verses that do not have an insightful question it can answer.  And, avoid religious references in the questions.  The dictionary created in step 5 will later be used to train the model. 
+    5. Using Chat GPT, create a sample question for each verse in the Book of Psalms that would reasonably be expected to be asked by a person, and store these questions for each verse in a dictionary.  Exclude all verses that do not have an insightful question it can answer.  And, avoid religious references in the questions.  The dictionary created in step 5 will later be used to train the model. 
     6. Create a new dataframe that will be filtered to include ONLY the verses that would be able to answer insightful questions, as defined in the prior step.  The dataframe will inlcude columns for the Chapter key, the Verse key, the verse text, and the sample questions for each verse, and will be re-indexed for the remaining "filtered" verses relevant to this application.  The new datafram will be called "filer
     7. Save the data frame to a CSV to be used in the model.
 
