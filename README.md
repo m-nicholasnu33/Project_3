@@ -39,8 +39,8 @@ This project is released under the [Creative Commons Zero v1.0 Universal License
 - **Data Extraction**: 
     1. The King James version, in CSV form, is selected from the available files from the Kaggle link
     2. The CSV is then read into the Jupyter notebook as a dataframe called bible
-- **Data Cleaning**: Note that each verse is accessed by a unique key, the combination of the BOOK+CHAPTER+VERSE id.
-    1. The scope of the project will be limited to only referencing the Book of Psalms for applying recommendation tool.   
+- **Data Cleaning**: Note that each verse is accessed by a unique key, the combination of the BOOK+CHAPTER+VERSE id. 
+    1. The scope of the project will be limited to only referencing the Book of Psalms for applying recommendation tool. Since our scope is limited to just one book, the book is not needed to index.
     2. Therefore, a new data frame will be created by applying the .loc function to limit the original Data Frame to only the Book of Psalms (referenced as 19 in the original dataset), and naming the new data frame "psalms."
     3. To further clean the data, drop columns for index, 'id' (unique key for each chapter/verse combination), and 'b' (Book), and reset the index for the revised data frame referencing.
     4. The revised data frame will include and inde for each Chapter/verse combination within the Book of Psalms.
