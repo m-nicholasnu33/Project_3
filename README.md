@@ -74,7 +74,7 @@ Compared the results of 6 scenarios applying 2 Distance Metrics to 3 different e
 
 **The results of the model evaluation are below...**
 
-![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## Additional Information
 
